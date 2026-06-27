@@ -21,7 +21,7 @@ export default function Home() {
       </div>
 
       <footer className="mt-12 text-xs text-zinc-500 text-center">
-        Built with Next.js · FastAPI · LangChain · pgvector · OpenAI
+        Built with Next.js · FastAPI · LangChain · pgvector · Groq · v2
       </footer>
     </main>
   );
