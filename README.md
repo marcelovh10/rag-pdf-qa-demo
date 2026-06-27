@@ -5,8 +5,8 @@
 
 ## Live demo
 
-- **Frontend:** [pending — deploy to Vercel]
-- **API:** [pending — deploy to Railway]
+- **Frontend:** https://rag-pdf-qa-demo.vercel.app
+- **API:** https://rag-pdf-qa-demo-production.up.railway.app
 - **Try it:** Upload a PDF, ask a question, get a cited answer.
 
 ## Stack
