@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.env
+*.pdf
+
+# Node
+node_modules/
+.next/
+out/
+next-env.d.ts
+
+# Local env overrides
+.env.local
+.env.*.local
+
+# Server logs / runtime
+uvicorn.out
+uvicorn.err
+next.out
+next.err
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
