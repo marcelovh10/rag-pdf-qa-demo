@@ -59,6 +59,11 @@ def _estimate_cost(usage: dict) -> float:
     return round(cost, 6)
 
 
+@app.get("/")
+async def root():
+    return {"status": "ok", "service": "rag-pdf-qa-api", "llm": f"{settings.llm_provider}/{settings.llm_model}"}
+
+
 @app.get("/health")
 async def health():
     return {"status": "ok", "llm": f"{settings.llm_provider}/{settings.llm_model}"}
