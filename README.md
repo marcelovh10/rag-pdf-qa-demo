@@ -28,7 +28,7 @@ The demo is **provider-agnostic**. Switch via `backend/.env`:
 | Provider | LLM | Embeddings | Cost |
 |---|---|---|---|
 | **Groq + OpenAI** (default) | `llama-3.3-70b-versatile` | OpenAI `text-embedding-3-small` | Free LLM + ~$0.02/1M tokens embeddings |
-| **Groq + HuggingFace** (100% free) | `llama-3.3-70b-versatile` | `sentence-transformers/all-MiniLM-L6-v2` | $0 — pero requiere bajar el modelo |
+| **Groq + HuggingFace** (100% free) | `llama-3.3-70b-versatile` | `sentence-transformers/all-MiniLM-L6-v2` | $0 — but it requires downloading the model |
 | **OpenAI everything** | `gpt-4o-mini` | OpenAI `text-embedding-3-small` | ~$0.15-0.60/1M tokens |
 | **Anthropic + OpenAI** | `claude-3-5-haiku-20241022` | OpenAI | ~$1-5/1M tokens |
 | **Anthropic only** | `claude-3-5-sonnet-20241022` | OpenAI | Premium quality |
