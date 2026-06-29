@@ -96,7 +96,12 @@ async def ingest_endpoint(file: UploadFile = File(...)):
     if not file.filename or not file.filename.lower().endswith(".pdf"):
         raise HTTPException(400, "Only PDF files are supported")
 
-    document_id = await ingest_pdf(file)
+    try:
+        document_id = await ingest_pdf(file)
+    except Exception as e:
+        logger.exception("Ingest failed")
+        raise HTTPException(500, f"Ingest failed: {type(e).__name__}: {e}")
+
     sb = get_supabase()
     count_result = sb.table("document_chunks").select("id", count="exact").eq("document_id", document_id).execute()
 
