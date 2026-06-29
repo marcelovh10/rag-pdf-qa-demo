@@ -81,7 +81,13 @@ async def root():
         "llm": f"{settings.llm_provider}/{settings.llm_model}",
         "embeddings": f"{settings.embedding_provider}/{settings.embedding_model}",
         "cors_origins": settings.cors_origins_list,
-        "version": "0.2.0",
+        "version": "0.3.0",
+        "env_check": {
+            "groq_key_set": bool(settings.groq_api_key and settings.groq_api_key.strip()),
+            "openai_key_set": bool(settings.openai_api_key and settings.openai_api_key.strip()),
+            "supabase_url_set": bool(settings.supabase_url and settings.supabase_url.strip()),
+            "supabase_key_set": bool(settings.supabase_service_role_key and settings.supabase_service_role_key.strip()),
+        },
     }
 
 
