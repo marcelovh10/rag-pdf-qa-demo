@@ -1,4 +1,12 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+// API client for RAG backend.
+// API_URL is injected at build time from NEXT_PUBLIC_API_URL env var.
+// Fallback to localhost only for local dev (npm run dev).
+
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  (typeof window !== "undefined" && window.location.hostname === "localhost"
+    ? "http://localhost:8000"
+    : "https://rag-pdf-qa-demo-production.up.railway.app");
 
 export type Citation = {
   chunk_id: string;
