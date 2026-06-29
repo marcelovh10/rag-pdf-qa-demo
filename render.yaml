@@ -1,0 +1,48 @@
+# Render Blueprint (https://render.com/docs/blueprint-spec)
+# Plan B: deploy this if Railway stops working.
+#
+# How to use:
+# 1. Go to https://render.com (sign up free with GitHub)
+# 2. Click "New +" -> "Blueprint"
+# 3. Connect repo: marcelovh10/rag-pdf-qa-demo
+# 4. Render detects render.yaml and shows the plan
+# 5. Click "Apply"
+# 6. BEFORE first deploy, manually add secrets in Render dashboard:
+#    - GROQ_API_KEY
+#    - SUPABASE_URL
+#    - SUPABASE_SERVICE_ROLE_KEY
+# 7. Deploy. Copy the URL (https://rag-pdf-qa-api.onrender.com)
+# 8. Update Vercel env var NEXT_PUBLIC_API_URL to the new URL
+# 9. Redeploy Vercel frontend
+#
+# NOTE: secrets are NOT in this file (GitHub push protection).
+# They are added manually in the Render dashboard (Environment section).
+
+services:
+  - type: web
+    name: rag-pdf-qa-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: LLM_PROVIDER
+        value: groq
+      - key: LLM_MODEL
+        value: llama-3.3-70b-versatile
+      - key: EMBEDDING_PROVIDER
+        value: huggingface
+      - key: EMBEDDING_MODEL
+        value: sentence-transformers/all-MiniLM-L6-v2
+      - key: EMBEDDING_DIM
+        value: "384"
+      - key: CORS_ORIGINS
+        value: https://rag-pdf-qa-demo.vercel.app
+      - key: GROQ_API_KEY
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
